@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import speech_recognition as sr
 import pyaudio
@@ -12,4 +12,5 @@ with sr.Microphone() as source:
 
 info.update({'name': name})
 
-print(info)
+for key, sentence in info.items():
+    print(sentence)

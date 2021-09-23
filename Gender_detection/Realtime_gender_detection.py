@@ -6,7 +6,7 @@ import numpy as np
 
 webcam = cv2.VideoCapture(0)
 
-padding = 20
+
 while webcam.isOpened():
     # read frame from webcam
     status, frame = webcam.read()
@@ -18,8 +18,8 @@ while webcam.isOpened():
     for idx, f in enumerate(face):
 
         # get corner points of face rectangle
-        (startX,startY) = max(0, f[0]-padding), max(0, f[1]-padding)
-        (endX,endY) = min(frame.shape[1]-1, f[2]+padding), min(frame.shape[0]-1, f[3]+padding)
+        (startX, startY) = f[0], f[1]
+        (endX, endY) = f[2], f[3]
 
         # draw rectangle over face
         cv2.rectangle(frame, (startX,startY), (endX,endY), (0,255,0), 2)

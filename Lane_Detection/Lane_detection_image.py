@@ -23,7 +23,7 @@ def draw_line(pic,lines):
     return pic
 
 
-image = cv2.imread("/Users/srijina/360DIGITMG_MY_LEARNING/Project_Datascience_online/Lane_detection/road.jpg")
+image = cv2.imread("road.jpg")
 image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
 
 print(image.shape)

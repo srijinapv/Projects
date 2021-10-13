@@ -40,5 +40,33 @@ for i in category:
 
 #Modelling
 
+from sklearn.linear_model import LogisticRegression
+from sklearn.cross_validation import KFold   #For K-fold cross validation
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
+from sklearn import metrics
+def classification_model(model, data, predictors, outcome):
+    #Fit the model:
+    model.fit(data[predictors],data[outcome])
+
+    #Make predictions on training set:
+    predictions = model.predict(data[predictors])
+
+    #Print accuracy
+    accuracy = metrics.accuracy_score(predictions,data[outcome])
+    print ("Accuracy : %s" % "{0:.3%}".format(accuracy))
+
+outcome_var= 'Loan_Status'
+model_DT = DecisionTreeClassifier()
+predictor_var = ['Credit_History','Gender','Married','Education']
+classification_model(model_DT, df,predictor_var,outcome_var)
+
+model_RT = RandomForestClassifier(n_estimators=100)
+predictor_var = ['Gender', 'Married', 'Dependents', 'Education',
+                 'Self_Employed', 'Loan_Amount_Term', 'Credit_History', 'Property_Area',
+                 'LoanAmount_log','TotalIncome_log']
+classification_model(model_RT, train,predictor_var,outcome_var)
+
+
 
 

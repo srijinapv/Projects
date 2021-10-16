@@ -15,3 +15,6 @@ def background(path):
 
     return median_frame
 
+# Calculate the average along the time axis
+avgFrame = np.average(number_frame, axis=0).astype(dtype=np.uint8)
+plt.imshow((avgFrame))

@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.feature_selection import SelectFromModel
+from sklearn.ensemble import RandomForestClassifier
 
 data_forest = pd.read_csv("forestfire.csv")
 
@@ -43,7 +46,6 @@ X_train, X_test, y_train, y_test = train_test_split(final_feature, y, test_size=
 
 #Model building
 #Random Forest
-from sklearn.ensemble import RandomForestClassifier
 RFC = RandomForestClassifier(n_estimators=100)
 
 #fit

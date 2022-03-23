@@ -44,3 +44,19 @@ res1_sqr = res1 * res1
 mse1 = np.mean(res1_sqr)
 rmse1 = np.sqrt(mse1)
 print(f'RMSE = {rmse1}')
+
+sm.qqplot(data, line ='45')
+plt.show()
+
+# Data is not normal so need to transform the data
+#Model building on transformed data
+#Log transformation
+# X = log(waist) Y = AT
+
+plt.scatter(x = np.log(data['Waist']), y = data['AT'], color = 'red')
+np.corrcoef(np.log(data.Waist), data.AT) #correlation
+
+model2 = smf.ols('AT ~ np.log(Waist)', data = data).fit()
+model2.summary()
+
+pred2 = model2.predict(pd.DataFrame(data['Waist']))
